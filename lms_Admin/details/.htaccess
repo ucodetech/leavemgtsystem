@@ -1,0 +1,10 @@
+RewriteEngine On
+
+
+
+RewriteRule ^employee-detail/([0-9a-zA-Z_-]+)$ employee-detail.php?detail=$1 [NC,L]
+RewriteRule ^admin-detail/([0-9a-zA-Z_-]+)$ admin-detail.php?detail=$1 [NC,L]
+RewriteRule ^maternity-Leave/([0-9a-zA-Z_-]+)$ maternity-Leave.php?detail=$1 [NC,L]
+RewriteRule ^annual-Leave/([0-9a-zA-Z_-]+)$ annual-Leave.php?detail=$1 [NC,L]
+
+

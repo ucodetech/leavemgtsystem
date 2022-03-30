@@ -1,0 +1,12 @@
+	$('#typeOfEmployBox').css('display','none');
+	$('#phoneNoBox').css('display','none');
+	$('#signatureBox').css('display','none');
+	$('#salaryGradeLevelBox').css('display','none');
+	$('#DateARBox').css('display','none');
+	$('#dateProceedLeaveBox').css('display','none');
+	$('#dateReturningLeaveBox').css('display','none');
+	$('#expirationDateBox').css('display','none');
+	$('#organisationBox').css('display','none');
+	$('#dueToDeliverBox').css('display','none');
+	$('#addressBox').css('display','none');
+	$('#rankBox').css('display','none');

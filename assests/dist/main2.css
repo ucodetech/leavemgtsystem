@@ -1,0 +1,29 @@
+body{
+
+    background: linear-gradient(to right, #1d9c73 50%, #003366 120%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+   font-family:Poppins;
+   font-size: 18px;
+}
+.ucodeHr{
+  height:2px;
+  border-radius: 100px;
+  color: orangered;
+}
+.ucodeColor{
+  background: linear-gradient(to left, green 20%, orangered 150%);
+}
+.ucodeBtn{
+  border-radius:50px;
+  font-weight: bold;
+  font-size: 20px;
+  background: linear-gradient(to right, #0acffe 0%,  #495aff 100%);
+  border:none;
+}
+.ucodeBtn:hover{
+  background: linear-gradient(to right,  #495aff 0%,  #0acffe  100%);
+
+}
