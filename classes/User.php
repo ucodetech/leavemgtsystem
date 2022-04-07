@@ -399,6 +399,18 @@ public function selectToken($token, $userid){
  }
 }
 
+public function selectTokenAdmin($token){
+
+  $sql = "SELECT * FROM verifyAdmin WHERE token = '$token'";
+ $this->_db->query($sql);
+ if ($this->_db->count()) {
+  return $this->_db->first();
+ }else{
+  return false;
+ }
+}
+
+
 public function verify_email($usid){
 	$this->_db->update('users', 'id', $usid, array(
 		'verified' => 1

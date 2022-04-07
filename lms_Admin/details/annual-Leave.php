@@ -24,7 +24,6 @@ if ($leaveRequest) {
 
 			//this grabs leave details
 
-
 	$full_name = $leaveRequest->full_name;
 	$file_no = $leaveRequest->file_no;
 	$department = $leaveRequest->department;
@@ -138,7 +137,7 @@ if ($leaveRequest) {
 			<div class="container-fluid">
 				<div class="container shadow-lg">
 					<div class="text-center" style="line-height:1px;">
-						<h2>THE FEDERAL POLYTECHNIC, IDAH</h2>
+						<h2>GODFREY OKOYE UNIVERSITY ENUGU</h2>
 						<p>OFFICE OF THE REGISTRAR</p>
 						<span>(PERSONNEL DIVISION)</span>
 					</div><hr>
@@ -230,7 +229,7 @@ if ($leaveRequest) {
 								if (hasPermissionHR()) {
 									?>
 									<span class="text-danger text-md">Head of Deparmtment have not approved this leave request!</span>
-									<?
+									<?php
 								}elseif(hasPermissionHOD()){
 									?>
 									<!-- input start -->
@@ -239,7 +238,7 @@ if ($leaveRequest) {
 										<input type="text" name="recommendationOfHOD" class="form-control" id="recommendationOfHOD">
 									</div>
 									<!-- input end -->
-									<?		
+									<?php		
 								}
 							}else{
 								if (hasPermissionHOD()) {
@@ -248,7 +247,7 @@ if ($leaveRequest) {
 									<div class="col-sm-8">
 										<input type="text" name="recommendationOfHODUpdate" class="form-control" id="recommendationOfHODUpdate" value="<?=$recommendationOfHOD;?>">
 									</div>
-									<?
+									<?php
 								}
 								if (hasPermissionHR()) {
 									?>
@@ -258,7 +257,7 @@ if ($leaveRequest) {
 										<input type="disabled" class="form-control" id="recommendationOfHODs" value="<?=$recommendationOfHOD;?>" readonly>
 									</div>
 									<!-- input end -->
-									<?
+									<?php
 								}
 
 							}
@@ -274,16 +273,16 @@ if ($leaveRequest) {
 									if (hasPermissionHR()) {
 										?>
 										<span class="text-danger text-md">Not Approved yet</span>
-										<?
+										<?php
 									}elseif(hasPermissionHOD()){
 										?>
 										<input type="disabled" name="HodSignature" class="form-control" id="HodSignature" value="<?=$getSignature->signature;?>" readonly>
-										<?		
+										<?php		
 									}
 								}else{
 									?>
 									<img src="../../signatures/<?=$HodSignature?>" width="108" class="img-fluid" alt="HOD Signature">
-									<?
+									<?php
 								}
 
 								?>
@@ -299,22 +298,22 @@ if ($leaveRequest) {
 									if (hasPermissionHR()) {
 										?>
 										<span class="text-danger text-sm">No Date Yet</span>
-										<?
+										<?php
 									}elseif(hasPermissionHOD()){
 										?>
 										<input type="date" name="dateSigned" class="form-control" id="dateSigned">
-										<?		
+										<?php		
 									}
 								}else{
 									if (hasPermissionHR()) {
 		    							?>
 		    							Current Date:<input type="disabled"  class="form-control"  value="<?=pretty_dates($leaveRequest->HodDateSigned);?>" readonly> <hr>
-		    							<?
+		    							<?php
 									}elseif(hasPermissionHOD()){
 										?>
 										Current Date:<input type="disabled"  class="form-control"  value="<?=pretty_dates($leaveRequest->HodDateSigned);?>" readonly> <hr>
 										<input type="date" name="dateUpdated" class="form-control" id="dateUpdated" value="<?=pretty_dates($leaveRequest->HodDateSigned);?>">
-										<?
+										<?php
 									}
 								}
 
@@ -453,7 +452,7 @@ if ($leaveRequest) {
 			</div>
 		</div>
 
-		<?
+		<?php
 
 	}
 

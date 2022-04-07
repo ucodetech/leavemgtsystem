@@ -16,12 +16,12 @@ if(isset($_POST['action']) && $_POST['action'] == "fetch_data"){
 
           <img src='../employeePortal/avaters/<?=$active->passport;?>' width='70px' height='70px' style='border-radius:50px;' alt='Passport'>
          <br>
-         <?
+           <?php
          echo strtok($active->full_name, ' ') . '- ID-' . $active->id ;
          ?>
 
        </div>
-       <?
+         <?php
      }
    }
 
@@ -46,7 +46,7 @@ if(isset($_POST['action']) && $_POST['action'] == "fetch_super"){
          
 
        </div>
-       <?
+         <?php
      }
    }
 

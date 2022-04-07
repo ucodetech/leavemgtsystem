@@ -1,8 +1,14 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 require_once '../../core/init.php';
 
 $admin = new Admin();
 $validate = new Validate();
+$mailme = new MyMail();
+$userid = $admin->data()->id;
 
 if (isset($_POST['action']) && $_POST['action'] == 'add_admin') {
 
@@ -11,14 +17,14 @@ if (isset($_POST['action']) && $_POST['action'] == 'add_admin') {
 			$validation = $validate->check($_POST, array(
 				'fullName' => array(
 					'required' => true,
-					'min' => 10,
+					'min' => 6,
 					'max' => 255
 
 				),
 				'sudo_fileNo' => array(
 					'required' => true,
 					'unique' => 'superusers',
-					'min' => 8,
+					'min' => 6,
 					'max' => 30
 				),
 				'sudo_email' => array(
@@ -68,8 +74,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'add_admin') {
 				'sudo_department' => Input::get('sudo_department'),
 				'sudo_permission' => Input::get('permission'),
 				'profile_pic' => $default
-	
-
 
 			));
 				$randNo = rand(1000, 9999);
@@ -93,61 +97,50 @@ if (isset($_POST['action']) && $_POST['action'] == 'add_admin') {
 
 					$admin->updateAdmin($username, $email);
 
-
-					$mail =  new PHPMailer(true);
-
-             try {
-               //SMTP settings
-              // $mail->SMTPDebug = 3;
-              $mail->isSMTP();
-              $mail->Host = "smtp.gmail.com";
-              $mail->SMTPAuth = true;
-              $mail->Username = "youremail";
-              $mail->Password =  "yourpassword";
-              $mail->SMTPSecure = "tls";
-              $mail->Port = 587; // for tls
-            //   $mail->SMTPDebug = 2;
-               // $mail->isSMTP();
-               // $mail->Host = "mail.web.com.ng";
-               // $mail->SMTPAuth = true;
-               // $mail->Username = "youremail";
-               // $mail->Password =  "yourpassword";
-               // $mail->SMTPSecure = "ssl";
-               // $mail->Port = 465; // for tls
-
-               //email settings
-               $mail->isHTML(true);
-               $mail->setFrom("youremail",  "LMS.");
-               $mail->addAddress($email);
-            //   $mail->addReplyTo("youremail");
-               $mail->Subject = "Welcome to LMS. Admin";
-               $mail->Body = "
-            <div style='width:80%; height:auto; padding:10px; margin:10px'>
-
-           <p style='color: #000; font-size: 20px; text-align: center; text-transform: uppercase;margin-top:0px'> Welcome Leave Management System </p>
-        <p  style='color: #000; font-size: 18px; text-transform:capitalize;margin:10px;  '>Hi!&nbsp;&nbsp; $fullname<br>
+					$mg ="
+            Welcome to Leave Management System! $fullname<br>
             You have be granted access to the Admin Panel of Leave Management System.
-        </p>
-        <p style='color:red;'>Note: You are been monitored so please becareful what you do here!</p>
-        <p>Here are your login details <br> <span style='color:green;'>Username: $username and Password: $password </span></p>
-        <h4>You are advised to change your password immedately on your first login</h4>
-        <p>
-        	You are equally mandated to verify your email address by clicking the link blow: <br>
-        	<a href='$url'>$url</a>
-        </p>
+       		Username: $username and Password: $password <br>
+		        You are advised to change your password immediately on your first login<br>
+		       
+		        	You are equally mandated to verify your email address by clicking the link blow: <br>
+		        	<a href='$url'>$url</a>
+		         ";
+         $messageBody = $mailme->mailTemp('Welcome to LMS Admin',$mg);
+      
+        // if($mailme->sendMailMine('GOU Admin',$email,'Admin Panel Access', $messageBody))
 
-         </div>
+        // Load Composer's autoloader
+        require APPROOT . '/vendor/autoload.php';
+        $mail = new PHPMailer(true);
+        //
+        try {
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;       
+            $mail->isSMTP();
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = "blqck48@gmail.com";
+            $mail->Password = "maryluv166";
+            $mail->SMTPSecure = "ssl";
+            $mail->Port = 465; // for tls
 
-        ";
-        $mail->send();
-        echo 'success';
-
+            //email settings
+            $mail->isHTML(true);
+            $mail->setFrom("blqck48@gmail.com", $fromName);
+            $mail->addAddress($email);
+            // $mail->addReplyTo("ucodetech.wordpress@gmail.com", "Library Offence Doc.");
+            $mail->Subject = 'GOU LMS Admin Panel';
+            $mail->Body = $messageBody;
+            if($mail->send())
+            	Database::getInstance()->query("INSERT INTO verifyAdmin (sudo_email, token) VALUES ('$email','$token') ");
+               echo 'success';
         } catch (\Exception $e) {
-
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
-	}
+          
+         
 
+	 }
 
 	}catch (Exception $e) {
 		echo $e->getMessage();

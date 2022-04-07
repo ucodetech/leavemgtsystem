@@ -7,14 +7,14 @@
       Session::flash('denied', 'You do not have permission access that page!');
       Redirect::to('sudo-dashboard');
     }
-
 ?>
     <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid myPage">
-       <?php echo $title ;?><hr>
+       <?php
+       echo $title ;?><hr>
       </div>
        <div id="showError">
 
@@ -127,6 +127,7 @@
           $('#addAdminBtn').html('<img src="'+gifPath+'" alt="loader">&nbsp;a moment');
         },
         success:function(response){
+          console.log(response);
           if ($.trim(response)==='success') {
             $('#adminFormRegister')[0].reset();
             $('#addAdminBtn').html('<img src="'+gifPath+'" alt="loader">&nbsp;Redirecting...');
@@ -138,7 +139,6 @@
 
           }
         }
-
       });
     });
 

@@ -38,10 +38,6 @@
 
 
 
-	 require_once (APPROOT ."/PHPMailer/Exception.php");
-	 require APPROOT ."/PHPMailer/class.phpmailer.php";
-	 require APPROOT ."/PHPMailer/class.smtp.php";
-
 spl_autoload_register(function($class){
 	require_once (APPROOT .'/classes/' . $class . '.php');
 });
@@ -50,5 +46,4 @@ spl_autoload_register(function($class){
 require_once (APPROOT .'/helpers/session_helper.php');
 require_once (APPROOT .'/helpers/session.php');
 
-
-     
+error_reporting();

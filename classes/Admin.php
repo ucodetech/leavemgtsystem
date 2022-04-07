@@ -267,4 +267,34 @@ public function change_password($hashNewPass, $id)
 
 }
 
+
+public function selectTokenAdmin($token){
+
+  $sql = "SELECT * FROM verifyAdmin WHERE token = '$token'";
+ $this->_db->query($sql);
+ if ($this->_db->count()) {
+  return $this->_db->first();
+ }else{
+  return false;
+ }
+}
+
+
+public function verify_email($email){
+	
+	$this->_db->query("UPDATE superusers SET sudo_verified = 1 WHERE sudo_email = '$email' ");
+ 	 return true;
+}
+
+public function deleteVkey($email){
+	if($this->_db->delete('verifyAdmin', array('sudo_email', '=', $email))){
+	  return true;
+	}else{
+		return false;
+	}
+}
+
+
+
+
 }//end of class

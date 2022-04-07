@@ -43,13 +43,11 @@
            $NewFileName = $FileName.'-'.$RandomNum.'.'.$FileExt;
            $output_dir = 'avaters/'.$NewFileName;//Path for file
 
-          if ($FileSize > 1000000) {
+          if ($FileSize > 1000000000) {
             echo  $show->showMessage('danger', 'file size should be less than 1MB', 'warning');
-            return false;
           }
           if (!in_array(strtolower($FileExt), $valid)) {
               echo  $show->showMessage('danger', 'Invalid Extension', 'warning');
-              return false;
 
           }
 
@@ -70,7 +68,7 @@
                 <script>
                   window.location = 'lms-dashboard';
                 </script>
-              <?
+              <?php
 
         }else{
          echo 'Unable to move file';
@@ -98,13 +96,11 @@
            $NewFileName = $FileName.'-'.$RandomNum.'.'.$FileExt;
            $output_dir = 'avaters/'.$NewFileName;//Path for file
 
-          if ($FileSize > 1000000) {
+          if ($FileSize > 100000000) {
             echo  $show->showMessage('danger', 'file size should be less than 1MB', 'warning');
-            return false;
           }
           if (!in_array(strtolower($FileExt), $valid)) {
               echo  $show->showMessage('danger', 'Invalid Extension', 'warning');
-              return false;
 
           }
 
@@ -124,7 +120,7 @@
                 <script>
                   window.location = 'lms-dashboard';
                 </script>
-              <?
+              <?php
 
         }else{
          echo 'Unable to move file';
@@ -261,11 +257,11 @@
                       if ($dateToday == $getDate->dateOfProceedingOnLeave || $dateToday > $getDate->dateOfProceedingOnLeave) {
                          ?>
                            <div id="DateCountdown" data-date="<?=$getDate->dateReturningToDuty;?>" style="width: auto; height: auto; padding: 0px; box-sizing: border-box; background-color: #E0E8EF"></div><br><br><br>
-                        <?
+                        <?php
                       }else{
                         ?>
                         <span class="text-info">Count down will start on <?=pretty_dates($getDate->dateOfProceedingOnLeave)?></span>
-                        <?
+                        <?php
                       }
 
                 }

@@ -5,7 +5,7 @@
      Leave Management System
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2020-2021 <a href="https://adminlte.io">Fed Poly Idah</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020-2021 <a href="#">Godfrey okoye University Enugu</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

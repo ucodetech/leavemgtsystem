@@ -6,8 +6,8 @@
 
   <div class="container-fluid bg-dark">
     <div class="container" style="padding:12px;">
-      <h2 class="text-center text-info text-bold text-upper">Welcome to Federal Polytechnic Idah Leave Management System <hr class="invisible">
-        <img src="https://upload.wikimedia.org/wikipedia/en/3/32/Idah_Poly.jpeg" alt="FPI LOGO">
+      <h2 class="text-center text-info text-bold text-upper">Welcome to Godfrey okoye University Enugu Leave Management System <hr class="invisible">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/ab/GOUniversity_logo.jpg" alt="GOU LOGO">
       </h2>
     </div><hr>
 

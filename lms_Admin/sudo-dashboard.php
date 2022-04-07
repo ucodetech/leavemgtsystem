@@ -66,7 +66,7 @@ if (isset($_POST['uploadSignature'])) {
             <script>
               window.location = 'sudo-dashboard' ; 
             </script>
-          <?
+            <?php
         }else{
            $success .=  $show->showMessage('danger', 'update Failed!', 'warning');
         }

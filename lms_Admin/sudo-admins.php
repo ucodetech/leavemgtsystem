@@ -37,7 +37,7 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <a href="<?URLROOT;?>sudo-addAdmin" class="btn btn-info">Add Admin</a>
+        <a href="sudo-addAdmin" class="btn btn-info">Add Admin</a>
           <hr>
    			<div class="container-fluid shadow-lg p-2">
 				<div class="table-responsive" id="showAdmins">
